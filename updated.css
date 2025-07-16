@@ -1,0 +1,177 @@
+body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #ffe4e1;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s, opacity 1s;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #ff4d4d;
+      transform: rotate(45deg);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #ff4d4d;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--horizontalShift), -100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float-down {
+      0% {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--horizontalShift), 100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .message-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      min-width: 300px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .buttons {
+      margin-top: 15px;
+    }
+
+   button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background: black; /* Base background */
+  animation: glow 3s infinite alternate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+    background-color: #ff4d4d;
+  }
+  25% {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    background-color: #ff00ff;
+  }
+  50% {
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    background-color: #00ffff;
+  }
+  75% {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    background-color: #00ff00;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffa500, 0 0 20px #ffa500, 0 0 30px #ffa500;
+    background-color: #ffa500;
+  }
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px white, 0 0 30px currentColor, 0 0 40px currentColor;
+}
+
+.buttons button:nth-child(1) {}
+.buttons button:nth-child(2) {}
+#lightsBtn {}
+#countdownBtn {}
+#finalBtn { }
+
+    #lightsBtn, #countdownBtn, #finalBtn {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+    }
+
+    #countDisplay {
+      font-size: 80px;
+      text-align: center;
+      margin-top: 20%;
+      display: none;
+      font-weight: bold;
+      text-shadow: 0 0 10px white, 0 0 20px currentColor, 0 0 40px currentColor;
+    }
+    #fireworksCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+.gold-light {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, gold 0%, rgb(255, 217, 0) 70%);
+  filter: blur(20px);
+  z-index: 3;
+  display: none;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#goldLightLeft { top: 0; left: 0; }
+#goldLightRight { top: 0; right: 0; }
+
+@keyframes pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
